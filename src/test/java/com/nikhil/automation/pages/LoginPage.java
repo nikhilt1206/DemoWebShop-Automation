@@ -8,7 +8,7 @@ public class LoginPage {
     private By emailTextBox = By.id("Email");
     private By passwordTextBox = By.id("Password");
     private By loginButton = By.cssSelector(".login-button");
-    private By logoutLink = By.className("ico-logout");
+
 
     public LoginPage(WebDriver driver){
         this.driver=driver;
@@ -20,10 +20,8 @@ public class LoginPage {
     public void enterPassword(String password){
         driver.findElement(passwordTextBox).sendKeys(password);
     }
-    public void clickLogin(){
+    public AccountPage clickLogin(){
         driver.findElement(loginButton).click();
-    }
-    public boolean isLogoutDisplayed(){
-        return driver.findElement(logoutLink).isDisplayed();
+        return new AccountPage(driver);
     }
 }

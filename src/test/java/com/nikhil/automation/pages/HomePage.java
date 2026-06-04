@@ -15,4 +15,8 @@ public class HomePage {
         driver.findElement(loginLink).click();
     }
 
+    public boolean isLoginLinkDisplayed(){
+        return driver.findElement(loginLink).isDisplayed();
+    }
+
 }
