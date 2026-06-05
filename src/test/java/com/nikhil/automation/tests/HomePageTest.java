@@ -4,6 +4,7 @@ import com.nikhil.automation.base.BaseTest;
 import com.nikhil.automation.pages.AccountPage;
 import com.nikhil.automation.pages.HomePage;
 import com.nikhil.automation.pages.LoginPage;
+import com.nikhil.automation.utils.ConfigReader;
 import org.testng.Assert;
 import org.testng.annotations.Test;
 
@@ -13,11 +14,10 @@ public class HomePageTest extends BaseTest {
     public void verifyHomePageLoads(){
 
         HomePage homePage = new HomePage(driver);
-        homePage.clickLogin();
 
-        LoginPage loginPage = new LoginPage(driver);
-        loginPage.enterEmail("nikhilt1206@gmail.com");
-        loginPage.enterPassword("Organic30");
+        LoginPage loginPage = homePage.clickLogin();
+        loginPage.enterEmail(ConfigReader.getProperty("email"));
+        loginPage.enterPassword(ConfigReader.getProperty("password"));
 
         AccountPage accountPage = loginPage.clickLogin();
         Assert.assertTrue(accountPage.isLogoutDisplayed());

@@ -11,8 +11,9 @@ public class HomePage {
         this.driver=driver;
     }
 
-    public void clickLogin(){
+    public LoginPage clickLogin(){
         driver.findElement(loginLink).click();
+        return new LoginPage(driver);
     }
 
     public boolean isLoginLinkDisplayed(){
