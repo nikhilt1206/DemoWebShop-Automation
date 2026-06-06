@@ -3,21 +3,20 @@ package com.nikhil.automation.pages;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 
-public class HomePage {
+public class HomePage extends BasePage{
     private By loginLink = By.linkText("Log in");
-    private WebDriver driver;
 
     public HomePage(WebDriver driver){
-        this.driver=driver;
+        super(driver);
     }
 
     public LoginPage clickLogin(){
-        driver.findElement(loginLink).click();
+        click(loginLink);
         return new LoginPage(driver);
     }
 
     public boolean isLoginLinkDisplayed(){
-        return driver.findElement(loginLink).isDisplayed();
+        return isDisplayed(loginLink);
     }
 
 }

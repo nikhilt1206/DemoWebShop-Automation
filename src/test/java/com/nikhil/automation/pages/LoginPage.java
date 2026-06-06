@@ -3,25 +3,25 @@ package com.nikhil.automation.pages;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 
-public class LoginPage {
-    private WebDriver driver;
+public class LoginPage extends BasePage{
+
     private By emailTextBox = By.id("Email");
     private By passwordTextBox = By.id("Password");
     private By loginButton = By.cssSelector(".login-button");
 
 
     public LoginPage(WebDriver driver){
-        this.driver=driver;
+        super(driver);
     }
 
     public void enterEmail(String email){
-        driver.findElement(emailTextBox).sendKeys(email);
+        enterDetails(emailTextBox,email);
     }
     public void enterPassword(String password){
-        driver.findElement(passwordTextBox).sendKeys(password);
+        enterDetails(passwordTextBox,password);
     }
     public AccountPage clickLogin(){
-        driver.findElement(loginButton).click();
+        click(loginButton);
         return new AccountPage(driver);
     }
 }

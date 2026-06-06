@@ -3,21 +3,20 @@ package com.nikhil.automation.pages;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 
-public class AccountPage {
+public class AccountPage extends BasePage{
 
-    private WebDriver driver;
     private By logoutLink = By.className("ico-logout");
 
     public AccountPage(WebDriver driver){
-        this.driver=driver;
+        super(driver);
     }
 
     public boolean isLogoutDisplayed(){
-        return driver.findElement(logoutLink).isDisplayed();
+        return isDisplayed(logoutLink);
     }
 
     public HomePage clickLogout(){
-        driver.findElement(logoutLink).click();
+        click(logoutLink);
         return new HomePage(driver);
     }
 
