@@ -2,21 +2,31 @@ package com.nikhil.automation.pages;
 
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.support.ui.WebDriverWait;
+
+import java.time.Duration;
+
+import static org.openqa.selenium.support.ui.ExpectedConditions.*;
 
 public class BasePage {
     protected WebDriver driver;
+    protected WebDriverWait wait;
+
 
     public BasePage(WebDriver driver){
         this.driver=driver;
+        wait = new WebDriverWait(driver,Duration.ofSeconds(10));
     }
 
     public void click(By locator){
-        driver.findElement(locator).click();
+        wait.until(elementToBeClickable(locator)).click();
     }
+
     public void enterDetails(By locator, String text){
-        driver.findElement(locator).sendKeys(text);
+        wait.until(visibilityOfElementLocated(locator)).sendKeys(text);
     }
+
     public boolean isDisplayed(By locator){
-        return driver.findElement(locator).isDisplayed();
+        return wait.until(visibilityOfElementLocated(locator)).isDisplayed();
     }
 }
