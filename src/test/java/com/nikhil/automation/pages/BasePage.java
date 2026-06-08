@@ -2,6 +2,7 @@ package com.nikhil.automation.pages;
 
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.ui.WebDriverWait;
 
 import java.time.Duration;
@@ -23,10 +24,16 @@ public class BasePage {
     }
 
     public void enterDetails(By locator, String text){
-        wait.until(visibilityOfElementLocated(locator)).sendKeys(text);
+        WebElement element = wait.until(visibilityOfElementLocated(locator));
+        element.clear();
+        element.sendKeys(text);
     }
 
     public boolean isDisplayed(By locator){
         return wait.until(visibilityOfElementLocated(locator)).isDisplayed();
+    }
+
+    public String getText(By locator){
+        return wait.until(visibilityOfElementLocated(locator)).getText();
     }
 }
