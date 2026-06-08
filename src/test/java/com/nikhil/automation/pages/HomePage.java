@@ -5,6 +5,7 @@ import org.openqa.selenium.WebDriver;
 
 public class HomePage extends BasePage{
     private By loginLink = By.linkText("Log in");
+    private By registerLink = By.linkText("Register");
 
     public HomePage(WebDriver driver){
         super(driver);
@@ -17,6 +18,11 @@ public class HomePage extends BasePage{
 
     public boolean isLoginLinkDisplayed(){
         return isDisplayed(loginLink);
+    }
+
+    public RegisterPage clickRegister(){
+        click(registerLink);
+        return new RegisterPage(driver);
     }
 
 }
