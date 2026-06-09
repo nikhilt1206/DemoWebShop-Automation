@@ -13,7 +13,8 @@ public class RegisterPage extends BasePage{
     private By passwordTextBox = By.id("Password");
     private By confirmPasswordTextBox = By.id("ConfirmPassword");
     private By registerButton = By.id("register-button");
-    private By registrationSuccessfulMessage;
+    private By registrationSuccessMessage = By.cssSelector(".result");
+
 
     public RegisterPage(WebDriver driver){
         super(driver);
@@ -50,5 +51,9 @@ public class RegisterPage extends BasePage{
 
     public void clickRegister(){
         click(registerButton);
+    }
+
+    public String getRegistrationSuccessMessage(){
+        return getText(registrationSuccessMessage);
     }
 }
