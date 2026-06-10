@@ -56,4 +56,19 @@ public class RegisterPage extends BasePage{
     public String getRegistrationSuccessMessage(){
         return getText(registrationSuccessMessage);
     }
+
+    public void registerUser(String gender,
+                             String firstName,
+                             String lastName,
+                             String email,
+                             String password
+                            ){
+        selectGender(gender);
+        enterFirstName(firstName);
+        enterLastName(lastName);
+        enterEmail(email);
+        enterPassword(password);
+        enterConfirmPassword(password);
+        clickRegister();
+    }
 }
