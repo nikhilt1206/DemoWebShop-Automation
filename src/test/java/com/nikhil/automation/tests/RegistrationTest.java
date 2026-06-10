@@ -15,14 +15,6 @@ public class RegistrationTest extends BaseTest {
 
         String email = "nikhil" + System.currentTimeMillis() + "@gmail.com";
 
-//        registerPage.selectGender("male");
-//        registerPage.enterFirstName("Nikhil");
-//        registerPage.enterLastName("Sharma");
-//        registerPage.enterEmail(email);
-//        registerPage.enterPassword("organic40");
-//        registerPage.enterConfirmPassword("organic40");
-//        registerPage.clickRegister();
-
         registerPage.registerUser(
                 "male",
                 "Sudhir",
@@ -30,10 +22,6 @@ public class RegistrationTest extends BaseTest {
                 email,
                 "password"
         );
-//        String actualMessage = registerPage.getRegistrationSuccessMessage();
-//        String expectedMessage = "Your registration completed";
-//        Assert.assertEquals(actualMessage,expectedMessage);
-
         Assert.assertEquals(registerPage.getRegistrationSuccessMessage(),"Your registration completed");
     }
 }
