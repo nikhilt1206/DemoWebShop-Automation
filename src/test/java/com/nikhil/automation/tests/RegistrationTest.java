@@ -3,6 +3,7 @@ package com.nikhil.automation.tests;
 import com.nikhil.automation.base.BaseTest;
 import com.nikhil.automation.pages.HomePage;
 import com.nikhil.automation.pages.RegisterPage;
+import com.nikhil.automation.utils.ConfigReader;
 import org.testng.Assert;
 import org.testng.annotations.Test;
 
@@ -16,11 +17,11 @@ public class RegistrationTest extends BaseTest {
         String email = "nikhil" + System.currentTimeMillis() + "@gmail.com";
 
         registerPage.registerUser(
-                "male",
-                "Sudhir",
-                "Sharma",
+                ConfigReader.getProperty("gender"),
+                ConfigReader.getProperty("firstname"),
+                ConfigReader.getProperty("lastname"),
                 email,
-                "password"
+                ConfigReader.getProperty("password")
         );
         Assert.assertEquals(registerPage.getRegistrationSuccessMessage(),"Your registration completed");
     }
