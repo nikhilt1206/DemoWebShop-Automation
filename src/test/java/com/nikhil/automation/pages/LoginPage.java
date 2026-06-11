@@ -9,7 +9,6 @@ public class LoginPage extends BasePage{
     private By passwordTextBox = By.id("Password");
     private By loginButton = By.cssSelector(".login-button");
 
-
     public LoginPage(WebDriver driver){
         super(driver);
     }
