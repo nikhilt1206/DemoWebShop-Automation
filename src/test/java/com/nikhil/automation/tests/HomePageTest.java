@@ -16,8 +16,6 @@ public class HomePageTest extends BaseTest {
         HomePage homePage = new HomePage(driver);
 
         LoginPage loginPage = homePage.clickLogin();
-//        loginPage.enterEmail(ConfigReader.getProperty("email"));
-//        loginPage.enterPassword(ConfigReader.getProperty("password"));
 
         AccountPage accountPage = loginPage.login(
                 ConfigReader.getProperty("email"),

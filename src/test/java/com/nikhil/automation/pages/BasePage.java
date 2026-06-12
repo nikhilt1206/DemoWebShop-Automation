@@ -1,5 +1,6 @@
 package com.nikhil.automation.pages;
 
+import com.nikhil.automation.constants.FrameworkConstants;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
@@ -16,7 +17,7 @@ public class BasePage {
 
     public BasePage(WebDriver driver){
         this.driver=driver;
-        wait = new WebDriverWait(driver,Duration.ofSeconds(10));
+        wait = new WebDriverWait(driver,Duration.ofSeconds(FrameworkConstants.EXPLICIT_WAIT));
     }
 
     public void click(By locator){
