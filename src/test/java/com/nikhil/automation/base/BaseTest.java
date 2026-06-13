@@ -9,7 +9,11 @@ import org.testng.annotations.BeforeMethod;
 
 public class BaseTest {
 
-    protected WebDriver driver;
+    protected static WebDriver driver;
+
+    public static WebDriver getDriver(){
+        return driver;
+    }
 
     @BeforeMethod
     public void setUp(){

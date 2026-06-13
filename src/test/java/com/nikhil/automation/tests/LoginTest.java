@@ -7,8 +7,10 @@ import com.nikhil.automation.pages.LoginPage;
 import com.nikhil.automation.utils.ConfigReader;
 import com.nikhil.automation.utils.ScreenshotUtils;
 import org.testng.Assert;
+import org.testng.annotations.Listeners;
 import org.testng.annotations.Test;
 
+@Listeners(com.nikhil.automation.listeners.TestListener.class)
 public class LoginTest extends BaseTest {
 
     @Test
@@ -20,8 +22,8 @@ public class LoginTest extends BaseTest {
                 (ConfigReader.getProperty("email"),
                  ConfigReader.getProperty("password")
                 );
-        ScreenshotUtils.captureScreenshot(driver,"LoginTest");
-        Assert.assertTrue(accountPage.isLogoutDisplayed());
+        //ScreenshotUtils.captureScreenshot(driver,"LoginTest");
+        Assert.assertTrue(false);
     }
 
 }

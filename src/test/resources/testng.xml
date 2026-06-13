@@ -1,0 +1,12 @@
+<suite name="DemoWebShop Suite">
+    <listeners>
+        <listener class-name="com.nikhil.automation.listeners.TestListener"/>
+    </listeners>
+    <test name="Regression">
+        <classes>
+            <class name="com.nikhil.automation.tests.LoginTest"/>
+            <class name="com.nikhil.automation.tests.HomePageTest"/>
+            <class name="com.nikhil.automation.tests.RegistrationTest"/>
+        </classes>
+    </test>
+</suite>
