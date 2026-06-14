@@ -23,7 +23,7 @@ public class LoginTest extends BaseTest {
                  ConfigReader.getProperty("password")
                 );
         //ScreenshotUtils.captureScreenshot(driver,"LoginTest");
+        //Assert.assertTrue(accountPage.isLogoutDisplayed());
         Assert.assertTrue(false);
     }
-
 }
