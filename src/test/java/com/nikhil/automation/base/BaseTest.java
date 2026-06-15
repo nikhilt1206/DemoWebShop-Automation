@@ -2,6 +2,7 @@ package com.nikhil.automation.base;
 
 import com.nikhil.automation.constants.BrowserType;
 import com.nikhil.automation.utils.ConfigReader;
+import com.nikhil.automation.utils.LoggerUtils;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.testng.annotations.AfterMethod;
@@ -21,15 +22,18 @@ public class BaseTest {
         String browser = ConfigReader.getProperty("browser");
         BrowserType browserType = BrowserType.valueOf(browser.toUpperCase());
         if(browserType == BrowserType.CHROME){
+            LoggerUtils.logInfo("Launching Browser");
             driver = new ChromeDriver();
         }
         driver.manage().window().maximize();
         driver.get(url);
+        LoggerUtils.logInfo("Navigated to URL: "+url);
     }
 
     @AfterMethod
     public void tearDown(){
         if(driver!=null){
+            LoggerUtils.logInfo("Closing Browser");
             driver.quit();
         }
     }
