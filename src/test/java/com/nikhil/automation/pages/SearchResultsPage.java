@@ -13,11 +13,16 @@ public class SearchResultsPage extends BasePage {
     }
 
     public boolean isProductDisplayed(){
-        return driver.findElement(productTitle).isDisplayed();
+        return isDisplayed(productTitle);
     }
 
     public boolean isNoResultMessageDisplayed(){
-        return driver.findElement(noResultsMessage).isDisplayed();
+        return isDisplayed(noResultsMessage);
     }
 
+    public ProductPage clickProduct(){
+        click(productTitle);
+        System.out.println(driver.getCurrentUrl());
+        return new ProductPage(driver);
+    }
 }

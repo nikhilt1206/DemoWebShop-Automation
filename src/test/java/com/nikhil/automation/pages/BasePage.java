@@ -37,4 +37,8 @@ public class BasePage {
     public String getText(By locator){
         return wait.until(visibilityOfElementLocated(locator)).getText();
     }
+
+    public void waitForTextToBePresent(By locator, String text){
+        wait.until(textToBePresentInElementLocated(locator,text));
+    }
 }
