@@ -1,6 +1,7 @@
 package com.nikhil.automation.tests;
 
 import com.nikhil.automation.base.BaseTest;
+import com.nikhil.automation.components.HeaderComponent;
 import com.nikhil.automation.pages.HomePage;
 import com.nikhil.automation.pages.ProductPage;
 import com.nikhil.automation.pages.SearchResultsPage;
@@ -15,6 +16,8 @@ public class CartTest extends BaseTest {
         SearchResultsPage searchResultsPage = homePage.searchProduct("Laptop");
         ProductPage productPage = searchResultsPage.clickProduct();
         productPage.addToCart();
-        Assert.assertEquals(productPage.getCartCountText(), "(1)");
+        HeaderComponent header = productPage.getHeader();
+        header.waitForCartCount("(1)");
+        Assert.assertEquals(header.getCartCountText(),"(1)");
     }
 }
