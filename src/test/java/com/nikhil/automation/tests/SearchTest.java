@@ -11,14 +11,14 @@ public class SearchTest extends BaseTest {
     @Test
     public void validSearch(){
         HomePage homePage = new HomePage(driver);
-        SearchResultsPage searchResultsPage = homePage.searchProduct("Laptop");
+        SearchResultsPage searchResultsPage = homePage.getHeader().searchProduct("Laptop");
         Assert.assertTrue(searchResultsPage.isProductDisplayed());
     }
 
     @Test
     public void invalidSearch(){
         HomePage homePage = new HomePage(driver);
-        SearchResultsPage searchResultsPage = homePage.searchProduct("abc12345");
+        SearchResultsPage searchResultsPage = homePage.getHeader().searchProduct("abc12345");
         Assert.assertTrue(searchResultsPage.isNoResultMessageDisplayed());
 
     }

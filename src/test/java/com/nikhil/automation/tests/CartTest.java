@@ -13,7 +13,7 @@ public class CartTest extends BaseTest {
     @Test
     public void verifyProductCanBeAddedToCart(){
         HomePage homePage = new HomePage(driver);
-        SearchResultsPage searchResultsPage = homePage.searchProduct("Laptop");
+        SearchResultsPage searchResultsPage = homePage.getHeader().searchProduct("Laptop");
         ProductPage productPage = searchResultsPage.clickProduct();
         productPage.addToCart();
         HeaderComponent header = productPage.getHeader();

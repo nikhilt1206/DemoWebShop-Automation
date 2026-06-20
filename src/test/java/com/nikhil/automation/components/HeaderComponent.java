@@ -1,11 +1,14 @@
 package com.nikhil.automation.components;
 
 import com.nikhil.automation.pages.BasePage;
+import com.nikhil.automation.pages.SearchResultsPage;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 
 public class HeaderComponent extends BasePage {
 
+    private By searchInputBox = By.id("small-searchterms");
+    private By searchButton = By.className("search-box-button");
     private By cartQuantity = By.className("cart-qty");
 
     public HeaderComponent(WebDriver driver){
@@ -18,5 +21,11 @@ public class HeaderComponent extends BasePage {
 
     public void waitForCartCount(String expectedCount){
         waitForTextToBePresent(cartQuantity,expectedCount);
+    }
+
+    public SearchResultsPage searchProduct(String product){
+        enterDetails(searchInputBox,product);
+        click(searchButton);
+        return new SearchResultsPage(driver);
     }
 }

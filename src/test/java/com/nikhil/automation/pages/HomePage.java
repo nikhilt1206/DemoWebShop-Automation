@@ -1,13 +1,16 @@
 package com.nikhil.automation.pages;
 
+import com.nikhil.automation.components.HeaderComponent;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 
 public class HomePage extends BasePage{
     private By loginLink = By.linkText("Log in");
     private By registerLink = By.linkText("Register");
-    private By searchInputBox = By.id("small-searchterms");
-    private By searchButton = By.className("search-box-button");
+
+    public HeaderComponent getHeader(){
+        return new HeaderComponent(driver);
+    }
 
     public HomePage(WebDriver driver){
         super(driver);
@@ -25,12 +28,6 @@ public class HomePage extends BasePage{
     public RegisterPage clickRegister(){
         click(registerLink);
         return new RegisterPage(driver);
-    }
-
-    public SearchResultsPage searchProduct(String product){
-        enterDetails(searchInputBox,product);
-        click(searchButton);
-        return new SearchResultsPage(driver);
     }
 
 }
