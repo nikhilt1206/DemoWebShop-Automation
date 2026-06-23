@@ -28,4 +28,16 @@ public class CartTest extends BaseTest {
         CartPage cartPage = homePage.getHeader().clickShoppingCart();
         Assert.assertTrue(cartPage.isCartPageDisplayed());
     }
+
+    @Test
+    public void verifyAddedProductIsDisplayedInCart(){
+        HomePage homePage = new HomePage(driver);
+        SearchResultsPage searchResultsPage = homePage.getHeader().searchProduct("Laptop");
+        ProductPage productPage = searchResultsPage.clickProduct();
+        productPage.addToCart();
+        HeaderComponent headerComponent = productPage.getHeader();
+        headerComponent.waitForCartCount("(1)");
+        CartPage cartPage = headerComponent.clickShoppingCart();
+        Assert.assertEquals(cartPage.getProductName(),"14.1-inch Laptop");
+    }
 }

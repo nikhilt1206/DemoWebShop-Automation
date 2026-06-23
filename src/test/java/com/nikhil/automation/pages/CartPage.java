@@ -7,6 +7,7 @@ import org.openqa.selenium.WebDriver;
 public class CartPage extends BasePage{
 
     private By shoppingCartHeader = By.cssSelector(".page-title h1");
+    private By productName = By.className("product-name");
 
     public CartPage(WebDriver driver){
         super(driver);
@@ -18,5 +19,9 @@ public class CartPage extends BasePage{
 
     public boolean isCartPageDisplayed(){
         return isDisplayed(shoppingCartHeader);
+    }
+
+    public String getProductName(){
+        return getText(productName);
     }
 }
