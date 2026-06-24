@@ -2,10 +2,7 @@ package com.nikhil.automation.tests;
 
 import com.nikhil.automation.base.BaseTest;
 import com.nikhil.automation.components.HeaderComponent;
-import com.nikhil.automation.pages.CartPage;
-import com.nikhil.automation.pages.HomePage;
-import com.nikhil.automation.pages.ProductPage;
-import com.nikhil.automation.pages.SearchResultsPage;
+import com.nikhil.automation.pages.*;
 import org.testng.Assert;
 import org.testng.annotations.Test;
 
@@ -39,5 +36,19 @@ public class CartTest extends BaseTest {
         headerComponent.waitForCartCount("(1)");
         CartPage cartPage = headerComponent.clickShoppingCart();
         Assert.assertEquals(cartPage.getProductName(),"14.1-inch Laptop");
+    }
+
+    @Test
+    public void verifyGuestUserCanProceedToCheckout(){
+        HomePage homePage = new HomePage(driver);
+        SearchResultsPage searchResultsPage = homePage.getHeader().searchProduct("Laptop");
+        ProductPage productPage = searchResultsPage.clickProduct();
+        productPage.addToCart();
+        HeaderComponent headerComponent = productPage.getHeader();
+        headerComponent.waitForCartCount("(1)");
+        CartPage cartPage = headerComponent.clickShoppingCart();
+        cartPage.acceptTermsAndConditions();
+        LoginPage loginPage = cartPage.clickCheckout();
+        Assert.assertTrue(loginPage.isLoginPageDisplayed());
     }
 }

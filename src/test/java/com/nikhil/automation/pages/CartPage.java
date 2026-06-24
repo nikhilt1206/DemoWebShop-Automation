@@ -8,6 +8,8 @@ public class CartPage extends BasePage{
 
     private By shoppingCartHeader = By.cssSelector(".page-title h1");
     private By productName = By.className("product-name");
+    private By termsAndConditionsCheckbox = By.id("termsofservice");
+    private By checkoutButton = By.id("checkout");
 
     public CartPage(WebDriver driver){
         super(driver);
@@ -23,5 +25,14 @@ public class CartPage extends BasePage{
 
     public String getProductName(){
         return getText(productName);
+    }
+
+    public void acceptTermsAndConditions(){
+        click(termsAndConditionsCheckbox);
+    }
+
+    public LoginPage clickCheckout(){
+        click(checkoutButton);
+        return new LoginPage(driver);
     }
 }
