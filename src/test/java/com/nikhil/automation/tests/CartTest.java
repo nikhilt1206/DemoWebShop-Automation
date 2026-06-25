@@ -51,4 +51,19 @@ public class CartTest extends BaseTest {
         LoginPage loginPage = cartPage.clickCheckout();
         Assert.assertTrue(loginPage.isLoginPageDisplayed());
     }
+
+    @Test
+    public void verifyUserCanRemoveProductFromCart(){
+        HomePage homePage = new HomePage(driver);
+        SearchResultsPage searchResultsPage = homePage.getHeader().searchProduct("Laptop");
+        ProductPage productPage = searchResultsPage.clickProduct();
+        productPage.addToCart();
+        HeaderComponent headerComponent = productPage.getHeader();
+        headerComponent.waitForCartCount("(1)");
+        CartPage cartPage = headerComponent.clickShoppingCart();
+        cartPage.removeProductFromCart();
+        headerComponent.waitForCartCount("(0)");
+        Assert.assertEquals(headerComponent.getCartCountText(), "(0)");
+        Assert.assertEquals(cartPage.getEmptyCartMessage(),"Your Shopping Cart is empty!");
+    }
 }
