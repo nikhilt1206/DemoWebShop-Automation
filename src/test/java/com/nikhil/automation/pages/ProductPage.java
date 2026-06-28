@@ -7,6 +7,7 @@ import org.openqa.selenium.WebDriver;
 public class ProductPage extends BasePage {
 
     private By addToCartButton = By.id("add-to-cart-button-31");
+    private By addToWishlistButton = By.id("add-to-wishlist-button-43");
 
     public ProductPage(WebDriver driver){
         super(driver);
@@ -18,6 +19,10 @@ public class ProductPage extends BasePage {
 
     public ProductPage addToCart(){
         click(addToCartButton);
+        return this;
+    }
+    public ProductPage addToWishlist(){
+        click(addToWishlistButton);
         return this;
     }
 }
