@@ -24,4 +24,18 @@ public class WishlistTest extends BaseTest {
         Assert.assertEquals(wishlistPage.getWishlistProductName(),"Smartphone");
     }
 
+    @Test
+    public void verifyUserCanRemoveProductFromWishlist(){
+        HomePage homePage = new HomePage(driver);
+        SearchResultsPage searchResultsPage = homePage.getHeader().searchProduct("Smartphone");
+        ProductPage productPage = searchResultsPage.clickProduct();
+        productPage.addToWishlist();
+        HeaderComponent headerComponent = productPage.getHeader();
+        headerComponent.waitForWishlistCount("(1)");
+        WishlistPage wishlistPage = headerComponent.clickWishlist();
+        wishlistPage.removeProductFromWishlist();
+        headerComponent.waitForWishlistCount("(0)");
+        Assert.assertEquals(headerComponent.getWishlistCountText(), "(0)");
+        Assert.assertEquals(wishlistPage.getEmptyWishlistMessage(),"The wishlist is empty!");
+    }
 }
