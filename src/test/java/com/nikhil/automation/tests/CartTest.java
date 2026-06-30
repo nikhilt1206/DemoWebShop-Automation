@@ -48,7 +48,8 @@ public class CartTest extends BaseTest {
         headerComponent.waitForCartCount("(1)");
         CartPage cartPage = headerComponent.clickShoppingCart();
         cartPage.acceptTermsAndConditions();
-        LoginPage loginPage = cartPage.clickCheckout();
+        cartPage.clickCheckout();
+        LoginPage loginPage =  new LoginPage(driver);
         Assert.assertTrue(loginPage.isLoginPageDisplayed());
     }
 

@@ -34,9 +34,8 @@ public class CartPage extends BasePage{
         click(termsAndConditionsCheckbox);
     }
 
-    public LoginPage clickCheckout(){
+    public void  clickCheckout(){
         click(checkoutButton);
-        return new LoginPage(driver);
     }
 
     public void removeProductFromCart(){
