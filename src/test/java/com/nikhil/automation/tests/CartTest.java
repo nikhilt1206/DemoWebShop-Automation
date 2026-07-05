@@ -94,4 +94,31 @@ public class CartTest extends BaseTest {
         Assert.assertEquals(cartPage.getCouponErrorMessage(),
                 "The coupon code you entered couldn't be applied to your order");
     }
+
+    @Test
+    public void verifyInvalidGiftCardDisplaysErrorMessage(){
+        HomePage homePage = new HomePage(driver);
+        SearchResultsPage searchResultsPage = homePage.getHeader().searchProduct("Laptop");
+        ProductPage productPage = searchResultsPage.clickProduct();
+        productPage.addToCart();
+        HeaderComponent headerComponent = productPage.getHeader();
+        headerComponent.waitForCartCount("(1)");
+        CartPage cartPage = headerComponent.clickShoppingCart();
+        cartPage.applyGiftCard("INVALID12345");
+        Assert.assertEquals(cartPage.getGiftCardErrorMessage(),
+                "The coupon code you entered couldn't be applied to your order");
+    }
+
+    @Test
+    public void verifyUserCanContinueShopping(){
+        HomePage homePage = new HomePage(driver);
+        SearchResultsPage searchResultsPage = homePage.getHeader().searchProduct("Laptop");
+        ProductPage productPage = searchResultsPage.clickProduct();
+        productPage.addToCart();
+        HeaderComponent headerComponent = productPage.getHeader();
+        headerComponent.waitForCartCount("(1)");
+        CartPage cartPage = headerComponent.clickShoppingCart();
+        searchResultsPage= cartPage.clickContinueShopping();
+        Assert.assertTrue(searchResultsPage.isSearchPageDisplayed());
+    }
 }

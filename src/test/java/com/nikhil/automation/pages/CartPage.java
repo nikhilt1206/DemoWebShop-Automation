@@ -17,6 +17,10 @@ public class CartPage extends BasePage{
     private By discountCodeTextBox = By.cssSelector(".discount-coupon-code");
     private By applyCouponButton = By.cssSelector(".apply-discount-coupon-code-button");
     private By couponErrorMessage = By.cssSelector(".coupon-box .message");
+    private By giftCardTextBox = By.cssSelector(".gift-card-coupon-code");
+    private By addGiftCardButton = By.cssSelector(".apply-gift-card-coupon-code-button");
+    private By giftCardErrorMessage = By.cssSelector(".giftcard-box .message");
+    private By continueShoppingButton = By.cssSelector(".continue-shopping-button");
 
     public CartPage(WebDriver driver){
         super(driver);
@@ -67,5 +71,19 @@ public class CartPage extends BasePage{
 
     public String getCouponErrorMessage(){
         return getText(couponErrorMessage);
+    }
+
+    public void applyGiftCard(String giftCardCode){
+        enterDetails(giftCardTextBox,giftCardCode);
+        click(addGiftCardButton);
+    }
+
+    public String getGiftCardErrorMessage(){
+        return getText(giftCardErrorMessage);
+    }
+
+    public SearchResultsPage clickContinueShopping(){
+        click(continueShoppingButton);
+        return new SearchResultsPage(driver);
     }
 }

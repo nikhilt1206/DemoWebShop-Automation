@@ -5,11 +5,16 @@ import org.openqa.selenium.WebDriver;
 
 public class SearchResultsPage extends BasePage {
 
+    private By searchHeader = By.cssSelector(".page-title h1");
     private By productTitle = By.className("product-title");
     private By noResultsMessage = By.className("result") ;
 
     public SearchResultsPage(WebDriver driver){
         super(driver);
+    }
+
+    public boolean isSearchPageDisplayed(){
+        return isDisplayed(searchHeader);
     }
 
     public boolean isProductDisplayed(){
@@ -22,7 +27,6 @@ public class SearchResultsPage extends BasePage {
 
     public ProductPage clickProduct(){
         click(productTitle);
-        System.out.println(driver.getCurrentUrl());
         return new ProductPage(driver);
     }
 }
