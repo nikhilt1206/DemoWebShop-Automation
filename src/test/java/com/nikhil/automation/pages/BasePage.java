@@ -4,6 +4,7 @@ import com.nikhil.automation.constants.FrameworkConstants;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
+import org.openqa.selenium.support.ui.ExpectedCondition;
 import org.openqa.selenium.support.ui.WebDriverWait;
 
 import java.time.Duration;
@@ -40,5 +41,10 @@ public class BasePage {
 
     public void waitForTextToBePresent(By locator, String text){
         wait.until(textToBePresentInElementLocated(locator,text));
+    }
+
+    public String getAttribute(By locator, String attributeName){
+        WebElement element = wait.until(visibilityOfElementLocated(locator));
+        return element.getAttribute(attributeName);
     }
 }

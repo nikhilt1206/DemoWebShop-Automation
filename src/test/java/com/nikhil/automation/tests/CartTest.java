@@ -67,4 +67,34 @@ public class CartTest extends BaseTest {
         Assert.assertEquals(headerComponent.getCartCountText(), "(0)");
         Assert.assertEquals(cartPage.getEmptyCartMessage(),"Your Shopping Cart is empty!");
     }
+
+    @Test
+    public void verifyUserCanUpdateProductQuantity(){
+        HomePage homePage = new HomePage(driver);
+        SearchResultsPage searchResultsPage = homePage.getHeader().searchProduct("Laptop");
+        ProductPage productPage = searchResultsPage.clickProduct();
+        productPage.addToCart();
+        HeaderComponent headerComponent = productPage.getHeader();
+        headerComponent.waitForCartCount("(1)");
+        CartPage cartPage = headerComponent.clickShoppingCart();
+        cartPage.updateQuantity("3");
+        Assert.assertEquals(cartPage.getQuantity(),"3");
+    }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 }

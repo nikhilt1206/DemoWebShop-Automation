@@ -13,6 +13,7 @@ public class CartPage extends BasePage{
     private By removeProductCheckbox = By.cssSelector(".remove-from-cart input");
     private By updateShoppingCartButton = By.cssSelector(".update-cart-button");
     private By emptyCartMessage = By.className("order-summary-content");
+    private By quantityTextBox = By.cssSelector(".qty-input");
 
     public CartPage(WebDriver driver){
         super(driver);
@@ -45,5 +46,14 @@ public class CartPage extends BasePage{
 
     public String getEmptyCartMessage(){
         return getText(emptyCartMessage);
+    }
+
+    public void updateQuantity(String quantity){
+        enterDetails(quantityTextBox,quantity);
+        click(updateShoppingCartButton);
+    }
+
+    public String getQuantity(){
+        return getAttribute(quantityTextBox,"value");
     }
 }
