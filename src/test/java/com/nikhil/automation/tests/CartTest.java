@@ -80,4 +80,18 @@ public class CartTest extends BaseTest {
         cartPage.updateQuantity("3");
         Assert.assertEquals(cartPage.getQuantity(),"3");
     }
+
+    @Test
+    public void verifyInvalidCouponDisplaysErrorMessage(){
+        HomePage homePage = new HomePage(driver);
+        SearchResultsPage searchResultsPage = homePage.getHeader().searchProduct("Laptop");
+        ProductPage productPage = searchResultsPage.clickProduct();
+        productPage.addToCart();
+        HeaderComponent headerComponent = productPage.getHeader();
+        headerComponent.waitForCartCount("(1)");
+        CartPage cartPage = headerComponent.clickShoppingCart();
+        cartPage.applyCoupon("INVALID123");
+        Assert.assertEquals(cartPage.getCouponErrorMessage(),
+                "The coupon code you entered couldn't be applied to your order");
+    }
 }

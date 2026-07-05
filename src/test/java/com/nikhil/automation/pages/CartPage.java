@@ -14,6 +14,9 @@ public class CartPage extends BasePage{
     private By updateShoppingCartButton = By.cssSelector(".update-cart-button");
     private By emptyCartMessage = By.className("order-summary-content");
     private By quantityTextBox = By.cssSelector(".qty-input");
+    private By discountCodeTextBox = By.cssSelector(".discount-coupon-code");
+    private By applyCouponButton = By.cssSelector(".apply-discount-coupon-code-button");
+    private By couponErrorMessage = By.cssSelector(".coupon-box .message");
 
     public CartPage(WebDriver driver){
         super(driver);
@@ -55,5 +58,14 @@ public class CartPage extends BasePage{
 
     public String getQuantity(){
         return getAttribute(quantityTextBox,"value");
+    }
+
+    public void applyCoupon(String couponCode){
+        enterDetails(discountCodeTextBox,couponCode);
+        click(applyCouponButton);
+    }
+
+    public String getCouponErrorMessage(){
+        return getText(couponErrorMessage);
     }
 }
