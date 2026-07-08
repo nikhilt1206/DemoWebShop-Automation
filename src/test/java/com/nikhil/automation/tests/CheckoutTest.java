@@ -117,7 +117,7 @@
         }
 
         @Test
-        public void verifyCheckoutAsGuest(){
+        public void verifyGuestUserCanProceedToShippingAddress(){
             HomePage homePage = new HomePage(driver);
             SearchResultsPage searchResultsPage = homePage.getHeader().searchProduct("Laptop");
             ProductPage productPage = searchResultsPage.clickProduct();
@@ -127,6 +127,18 @@
             CartPage cartPage = headerComponent.clickShoppingCart();
             cartPage.acceptTermsAndConditions();
             LoginPage loginPage = cartPage.clickCheckout();
-            loginPage.clickCheckoutAsGuest();
+            CheckoutPage checkoutPage = loginPage.clickCheckoutAsGuest();
+            checkoutPage.fillBillingAddress(
+                    "Nikhil",
+                    "Tiwari",
+                    "nikhil@test.com",
+                    "India",
+                    "Varanasi",
+                    "Bhelupura",
+                    "221001",
+                    "9876543210"
+            );
+            checkoutPage.clickBillingAddressContinue();
+            Assert.assertTrue(checkoutPage.isInStorePickupCheckboxDisplayed());
         }
     }

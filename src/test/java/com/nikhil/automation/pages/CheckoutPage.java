@@ -17,6 +17,17 @@ public class CheckoutPage extends BasePage {
     private By confirmOrderContinueButton = By.cssSelector("input[onclick='ConfirmOrder.save()']");
     private By orderConfirmSuccessMessage = By.cssSelector(".order-completed .title strong");
 
+    // Guest Billing Address
+    private By firstNameTextBox = By.id("BillingNewAddress_FirstName");
+    private By lastNameTextBox = By.id("BillingNewAddress_LastName");
+    private By emailTextBox = By.id("BillingNewAddress_Email");
+    private By countryDropdown = By.id("BillingNewAddress_CountryId");
+    private By cityTextBox = By.id("BillingNewAddress_City");
+    private By address1TextBox = By.id("BillingNewAddress_Address1");
+    private By zipCodeTextBox = By.id("BillingNewAddress_ZipPostalCode");
+    private By phoneNumberTextBox = By.id("BillingNewAddress_PhoneNumber");
+    private By billingAddressContinueBtn = By.cssSelector("input[onclick='Billing.save()']");
+
     public CheckoutPage(WebDriver driver) {
         super(driver);
     }
@@ -63,6 +74,26 @@ public class CheckoutPage extends BasePage {
 
     public boolean isOrderConfirmSuccessMessageDisplayed(){
         return isDisplayed(orderConfirmSuccessMessage);
+    }
+
+    public void fillBillingAddress(
+            String firstName,
+            String lastName,
+            String email,
+            String country,
+            String city,
+            String address,
+            String zip,
+            String phone
+    ){
+        enterDetails(firstNameTextBox,firstName);
+        enterDetails(lastNameTextBox,lastName);
+        enterDetails(emailTextBox,email);
+        selectByVisibleText(countryDropdown,country);
+        enterDetails(cityTextBox,city);
+        enterDetails(address1TextBox,address);
+        enterDetails(zipCodeTextBox,zip);
+        enterDetails(phoneNumberTextBox,phone);
     }
 
 }

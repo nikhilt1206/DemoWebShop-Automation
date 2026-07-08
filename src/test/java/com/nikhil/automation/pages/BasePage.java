@@ -5,6 +5,7 @@ import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.ui.ExpectedCondition;
+import org.openqa.selenium.support.ui.Select;
 import org.openqa.selenium.support.ui.WebDriverWait;
 
 import java.time.Duration;
@@ -46,5 +47,11 @@ public class BasePage {
     public String getAttribute(By locator, String attributeName){
         WebElement element = wait.until(visibilityOfElementLocated(locator));
         return element.getAttribute(attributeName);
+    }
+
+    public void selectByVisibleText(By locator, String visibleText){
+        WebElement element = wait.until(visibilityOfElementLocated(locator));
+        Select select = new Select(element);
+        select.selectByVisibleText(visibleText);
     }
 }

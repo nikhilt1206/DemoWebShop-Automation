@@ -34,7 +34,8 @@ public class LoginPage extends BasePage{
         return isDisplayed(loginPageHeader);
     }
 
-    public void clickCheckoutAsGuest(){
+    public CheckoutPage clickCheckoutAsGuest(){
         click(checkoutAsGuestButton);
+        return new CheckoutPage(driver);
     }
 }
