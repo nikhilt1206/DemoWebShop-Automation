@@ -2,6 +2,7 @@ package com.nikhil.automation.pages;
 
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
+import com.nikhil.automation.pojo.BillingAddress;
 
 public class CheckoutPage extends BasePage {
 
@@ -76,24 +77,15 @@ public class CheckoutPage extends BasePage {
         return isDisplayed(orderConfirmSuccessMessage);
     }
 
-    public void fillBillingAddress(
-            String firstName,
-            String lastName,
-            String email,
-            String country,
-            String city,
-            String address,
-            String zip,
-            String phone
-    ){
-        enterDetails(firstNameTextBox,firstName);
-        enterDetails(lastNameTextBox,lastName);
-        enterDetails(emailTextBox,email);
-        selectByVisibleText(countryDropdown,country);
-        enterDetails(cityTextBox,city);
-        enterDetails(address1TextBox,address);
-        enterDetails(zipCodeTextBox,zip);
-        enterDetails(phoneNumberTextBox,phone);
+    public void fillBillingAddress(BillingAddress billingAddress){
+        enterDetails(firstNameTextBox,billingAddress.getFirstName());
+        enterDetails(lastNameTextBox,billingAddress.getLastName());
+        enterDetails(emailTextBox,billingAddress.getEmail());
+        selectByVisibleText(countryDropdown,billingAddress.getCountry());
+        enterDetails(cityTextBox,billingAddress.getCity());
+        enterDetails(address1TextBox,billingAddress.getAddress());
+        enterDetails(zipCodeTextBox,billingAddress.getZipCode());
+        enterDetails(phoneNumberTextBox,billingAddress.getPhoneNumber());
     }
 
 }

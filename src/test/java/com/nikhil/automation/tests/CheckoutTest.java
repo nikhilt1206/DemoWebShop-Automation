@@ -3,6 +3,7 @@
     import com.nikhil.automation.base.BaseTest;
     import com.nikhil.automation.components.HeaderComponent;
     import com.nikhil.automation.pages.*;
+    import com.nikhil.automation.pojo.BillingAddress;
     import com.nikhil.automation.utils.ConfigReader;
     import org.testng.Assert;
     import org.testng.annotations.Test;
@@ -128,7 +129,7 @@
             cartPage.acceptTermsAndConditions();
             LoginPage loginPage = cartPage.clickCheckout();
             CheckoutPage checkoutPage = loginPage.clickCheckoutAsGuest();
-            checkoutPage.fillBillingAddress(
+            BillingAddress billingAddress = new BillingAddress(
                     "Nikhil",
                     "Tiwari",
                     "nikhil@test.com",
@@ -138,6 +139,7 @@
                     "221001",
                     "9876543210"
             );
+            checkoutPage.fillBillingAddress(billingAddress);
             checkoutPage.clickBillingAddressContinue();
             Assert.assertTrue(checkoutPage.isInStorePickupCheckboxDisplayed());
         }
