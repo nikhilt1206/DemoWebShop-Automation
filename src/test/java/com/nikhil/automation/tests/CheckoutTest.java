@@ -143,4 +143,36 @@
             checkoutPage.clickBillingAddressContinue();
             Assert.assertTrue(checkoutPage.isInStorePickupCheckboxDisplayed());
         }
+
+        @Test
+        public void verifyGuestUserCanPlaceOrderSuccessfully(){
+            HomePage homePage = new HomePage(driver);
+            SearchResultsPage searchResultsPage = homePage.getHeader().searchProduct("Laptop");
+            ProductPage productPage = searchResultsPage.clickProduct();
+            productPage.addToCart();
+            HeaderComponent headerComponent = productPage.getHeader();
+            headerComponent.waitForCartCount("(1)");
+            CartPage cartPage = headerComponent.clickShoppingCart();
+            cartPage.acceptTermsAndConditions();
+            LoginPage loginPage = cartPage.clickCheckout();
+            CheckoutPage checkoutPage = loginPage.clickCheckoutAsGuest();
+            BillingAddress billingAddress = new BillingAddress(
+                    "Nikhil",
+                    "Tiwari",
+                    "nikhil@test.com",
+                    "India",
+                    "Varanasi",
+                    "Bhelupura",
+                    "221001",
+                    "9876543210"
+            );
+            checkoutPage.fillBillingAddress(billingAddress);
+            checkoutPage.clickBillingAddressContinue();
+            checkoutPage.clickShippingAddressContinue();
+            checkoutPage.clickShippingMethodContinue();
+            checkoutPage.clickPaymentMethodContinue();
+            checkoutPage.clickPaymentInformationContinue();
+            checkoutPage.clickConfirmOrderContinue();
+            Assert.assertTrue(checkoutPage.isOrderConfirmSuccessMessageDisplayed());
+        }
     }
