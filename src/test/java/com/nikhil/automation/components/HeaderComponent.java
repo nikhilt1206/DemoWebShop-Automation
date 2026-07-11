@@ -20,12 +20,16 @@ public class HeaderComponent extends BasePage {
         super(driver);
     }
 
-    public String getCartCountText(){
-        return getText(cartQuantity);
+    public int getCartCount(){
+        String cartCount = getText(cartQuantity);
+        String count = cartCount.substring(1,cartCount.length()-1);
+        int currentCartCount = Integer.parseInt(count);
+        return currentCartCount;
     }
 
-    public void waitForCartCount(String expectedCount){
-        waitForTextToBePresent(cartQuantity,expectedCount);
+    public void waitForCartCount(int expectedCount){
+        String expectedCountText = "(" + expectedCount + ")";
+        waitForTextToBePresent(cartQuantity,expectedCountText);
     }
 
     public CartPage clickShoppingCart(){

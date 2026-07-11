@@ -10,22 +10,25 @@
 
     public class CheckoutTest extends BaseTest {
 
+            private CheckoutPage navigateToRegisteredCheckout(){
+                HomePage homePage = new HomePage(driver);
+                LoginPage loginPage = homePage.clickLogin();
+                AccountPage accountPage = loginPage.login(ConfigReader.getProperty("email"),
+                        ConfigReader.getProperty("password"));
+                HeaderComponent headerComponent = accountPage.getHeader();
+                SearchResultsPage searchResultsPage = headerComponent.searchProduct("Laptop");
+                ProductPage productPage = searchResultsPage.clickProduct();
+                productPage.addToCart();
+                headerComponent = productPage.getHeader();
+                CartPage cartPage = headerComponent.clickShoppingCart();
+                cartPage.acceptTermsAndConditions();
+                cartPage.clickCheckout();
+                return new CheckoutPage(driver);
+            }
+
         @Test
         public void verifyRegisteredUserCanNavigateToCheckoutPage(){
-            HomePage homePage = new HomePage(driver);
-            LoginPage loginPage = homePage.clickLogin();
-            AccountPage accountPage = loginPage.login(ConfigReader.getProperty("email"),
-                    ConfigReader.getProperty("password"));
-            HeaderComponent headerComponent = accountPage.getHeader();
-            SearchResultsPage searchResultsPage = headerComponent.searchProduct("Laptop");
-            ProductPage productPage = searchResultsPage.clickProduct();
-            productPage.addToCart();
-            headerComponent = productPage.getHeader();
-            headerComponent.waitForCartCount("(1)");
-            CartPage cartPage = headerComponent.clickShoppingCart();
-            cartPage.acceptTermsAndConditions();
-            cartPage.clickCheckout();
-            CheckoutPage checkoutPage = new CheckoutPage(driver);
+            CheckoutPage checkoutPage = navigateToRegisteredCheckout();
             Assert.assertTrue(checkoutPage.isCheckoutPageDisplayed());
         }
 
@@ -40,7 +43,6 @@
             ProductPage productPage = searchResultsPage.clickProduct();
             productPage.addToCart();
             headerComponent = productPage.getHeader();
-            headerComponent.waitForCartCount("(1)");
             CartPage cartPage = headerComponent.clickShoppingCart();
             cartPage.acceptTermsAndConditions();
             cartPage.clickCheckout();
@@ -60,7 +62,6 @@
             ProductPage productPage = searchResultsPage.clickProduct();
             productPage.addToCart();
             headerComponent = productPage.getHeader();
-            headerComponent.waitForCartCount("(1)");
             CartPage cartPage = headerComponent.clickShoppingCart();
             cartPage.acceptTermsAndConditions();
             cartPage.clickCheckout();
@@ -81,7 +82,6 @@
             ProductPage productPage = searchResultsPage.clickProduct();
             productPage.addToCart();
             headerComponent = productPage.getHeader();
-            headerComponent.waitForCartCount("(1)");
             CartPage cartPage = headerComponent.clickShoppingCart();
             cartPage.acceptTermsAndConditions();
             cartPage.clickCheckout();
@@ -103,7 +103,6 @@
             ProductPage productPage = searchResultsPage.clickProduct();
             productPage.addToCart();
             headerComponent = productPage.getHeader();
-            headerComponent.waitForCartCount("(1)");
             CartPage cartPage = headerComponent.clickShoppingCart();
             cartPage.acceptTermsAndConditions();
             cartPage.clickCheckout();
@@ -124,7 +123,6 @@
             ProductPage productPage = searchResultsPage.clickProduct();
             productPage.addToCart();
             HeaderComponent headerComponent = productPage.getHeader();
-            headerComponent.waitForCartCount("(1)");
             CartPage cartPage = headerComponent.clickShoppingCart();
             cartPage.acceptTermsAndConditions();
             LoginPage loginPage = cartPage.clickCheckout();
@@ -151,7 +149,6 @@
             ProductPage productPage = searchResultsPage.clickProduct();
             productPage.addToCart();
             HeaderComponent headerComponent = productPage.getHeader();
-            headerComponent.waitForCartCount("(1)");
             CartPage cartPage = headerComponent.clickShoppingCart();
             cartPage.acceptTermsAndConditions();
             LoginPage loginPage = cartPage.clickCheckout();

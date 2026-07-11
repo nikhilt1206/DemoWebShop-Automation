@@ -15,8 +15,7 @@ public class CartTest extends BaseTest {
         ProductPage productPage = searchResultsPage.clickProduct();
         productPage.addToCart();
         HeaderComponent header = productPage.getHeader();
-        header.waitForCartCount("(1)");
-        Assert.assertEquals(header.getCartCountText(),"(1)");
+        Assert.assertEquals(header.getCartCount(),1);
     }
 
     @Test
@@ -33,7 +32,6 @@ public class CartTest extends BaseTest {
         ProductPage productPage = searchResultsPage.clickProduct();
         productPage.addToCart();
         HeaderComponent headerComponent = productPage.getHeader();
-        headerComponent.waitForCartCount("(1)");
         CartPage cartPage = headerComponent.clickShoppingCart();
         Assert.assertEquals(cartPage.getProductName(),"14.1-inch Laptop");
     }
@@ -45,7 +43,6 @@ public class CartTest extends BaseTest {
         ProductPage productPage = searchResultsPage.clickProduct();
         productPage.addToCart();
         HeaderComponent headerComponent = productPage.getHeader();
-        headerComponent.waitForCartCount("(1)");
         CartPage cartPage = headerComponent.clickShoppingCart();
         cartPage.acceptTermsAndConditions();
         cartPage.clickCheckout();
@@ -60,11 +57,9 @@ public class CartTest extends BaseTest {
         ProductPage productPage = searchResultsPage.clickProduct();
         productPage.addToCart();
         HeaderComponent headerComponent = productPage.getHeader();
-        headerComponent.waitForCartCount("(1)");
         CartPage cartPage = headerComponent.clickShoppingCart();
         cartPage.removeProductFromCart();
-        headerComponent.waitForCartCount("(0)");
-        Assert.assertEquals(headerComponent.getCartCountText(), "(0)");
+        Assert.assertEquals(headerComponent.getCartCount(), "(0)");
         Assert.assertEquals(cartPage.getEmptyCartMessage(),"Your Shopping Cart is empty!");
     }
 
@@ -75,7 +70,6 @@ public class CartTest extends BaseTest {
         ProductPage productPage = searchResultsPage.clickProduct();
         productPage.addToCart();
         HeaderComponent headerComponent = productPage.getHeader();
-        headerComponent.waitForCartCount("(1)");
         CartPage cartPage = headerComponent.clickShoppingCart();
         cartPage.updateQuantity("3");
         Assert.assertEquals(cartPage.getQuantity(),"3");
@@ -88,7 +82,6 @@ public class CartTest extends BaseTest {
         ProductPage productPage = searchResultsPage.clickProduct();
         productPage.addToCart();
         HeaderComponent headerComponent = productPage.getHeader();
-        headerComponent.waitForCartCount("(1)");
         CartPage cartPage = headerComponent.clickShoppingCart();
         cartPage.applyCoupon("INVALID123");
         Assert.assertEquals(cartPage.getCouponErrorMessage(),
@@ -102,7 +95,6 @@ public class CartTest extends BaseTest {
         ProductPage productPage = searchResultsPage.clickProduct();
         productPage.addToCart();
         HeaderComponent headerComponent = productPage.getHeader();
-        headerComponent.waitForCartCount("(1)");
         CartPage cartPage = headerComponent.clickShoppingCart();
         cartPage.applyGiftCard("INVALID12345");
         Assert.assertEquals(cartPage.getGiftCardErrorMessage(),
@@ -116,7 +108,6 @@ public class CartTest extends BaseTest {
         ProductPage productPage = searchResultsPage.clickProduct();
         productPage.addToCart();
         HeaderComponent headerComponent = productPage.getHeader();
-        headerComponent.waitForCartCount("(1)");
         CartPage cartPage = headerComponent.clickShoppingCart();
         searchResultsPage= cartPage.clickContinueShopping();
         Assert.assertTrue(searchResultsPage.isSearchPageDisplayed());
