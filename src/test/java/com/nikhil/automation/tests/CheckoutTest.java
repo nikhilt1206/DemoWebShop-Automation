@@ -34,38 +34,14 @@
 
         @Test
         public void verifyRegisteredUserCanProceedToShippingAddress(){
-            HomePage homePage = new HomePage(driver);
-            LoginPage loginPage = homePage.clickLogin();
-            AccountPage accountPage = loginPage.login(ConfigReader.getProperty("email"),
-                    ConfigReader.getProperty("password"));
-            HeaderComponent headerComponent = accountPage.getHeader();
-            SearchResultsPage searchResultsPage = headerComponent.searchProduct("Laptop");
-            ProductPage productPage = searchResultsPage.clickProduct();
-            productPage.addToCart();
-            headerComponent = productPage.getHeader();
-            CartPage cartPage = headerComponent.clickShoppingCart();
-            cartPage.acceptTermsAndConditions();
-            cartPage.clickCheckout();
-            CheckoutPage checkoutPage = new CheckoutPage(driver);
+            CheckoutPage checkoutPage = navigateToRegisteredCheckout();
             checkoutPage.clickBillingAddressContinue();
             Assert.assertTrue(checkoutPage.isInStorePickupCheckboxDisplayed());
         }
 
         @Test
         public void verifyRegisteredUserCanProceedToShippingMethod(){
-            HomePage homePage = new HomePage(driver);
-            LoginPage loginPage = homePage.clickLogin();
-            AccountPage accountPage = loginPage.login(ConfigReader.getProperty("email"),
-                    ConfigReader.getProperty("password"));
-            HeaderComponent headerComponent = accountPage.getHeader();
-            SearchResultsPage searchResultsPage = headerComponent.searchProduct("Laptop");
-            ProductPage productPage = searchResultsPage.clickProduct();
-            productPage.addToCart();
-            headerComponent = productPage.getHeader();
-            CartPage cartPage = headerComponent.clickShoppingCart();
-            cartPage.acceptTermsAndConditions();
-            cartPage.clickCheckout();
-            CheckoutPage checkoutPage = new CheckoutPage(driver);
+            CheckoutPage checkoutPage = navigateToRegisteredCheckout();
             checkoutPage.clickBillingAddressContinue();
             checkoutPage.clickShippingAddressContinue();
             Assert.assertTrue(checkoutPage.isGroundShippingMethodDisplayed());
@@ -73,19 +49,7 @@
 
         @Test
         public void verifyRegisteredUserCanProceedToPaymentMethod(){
-            HomePage homePage = new HomePage(driver);
-            LoginPage loginPage = homePage.clickLogin();
-            AccountPage accountPage = loginPage.login(ConfigReader.getProperty("email"),
-                    ConfigReader.getProperty("password"));
-            HeaderComponent headerComponent = accountPage.getHeader();
-            SearchResultsPage searchResultsPage = headerComponent.searchProduct("Laptop");
-            ProductPage productPage = searchResultsPage.clickProduct();
-            productPage.addToCart();
-            headerComponent = productPage.getHeader();
-            CartPage cartPage = headerComponent.clickShoppingCart();
-            cartPage.acceptTermsAndConditions();
-            cartPage.clickCheckout();
-            CheckoutPage checkoutPage = new CheckoutPage(driver);
+            CheckoutPage checkoutPage = navigateToRegisteredCheckout();
             checkoutPage.clickBillingAddressContinue();
             checkoutPage.clickShippingAddressContinue();
             checkoutPage.clickShippingMethodContinue();
@@ -94,19 +58,7 @@
 
         @Test
         public void verifyRegisteredUserCanPlaceOrderSuccessfully(){
-            HomePage homePage = new HomePage(driver);
-            LoginPage loginPage = homePage.clickLogin();
-            AccountPage accountPage = loginPage.login(ConfigReader.getProperty("email"),
-                    ConfigReader.getProperty("password"));
-            HeaderComponent headerComponent = accountPage.getHeader();
-            SearchResultsPage searchResultsPage = headerComponent.searchProduct("Laptop");
-            ProductPage productPage = searchResultsPage.clickProduct();
-            productPage.addToCart();
-            headerComponent = productPage.getHeader();
-            CartPage cartPage = headerComponent.clickShoppingCart();
-            cartPage.acceptTermsAndConditions();
-            cartPage.clickCheckout();
-            CheckoutPage checkoutPage = new CheckoutPage(driver);
+            CheckoutPage checkoutPage = navigateToRegisteredCheckout();
             checkoutPage.clickBillingAddressContinue();
             checkoutPage.clickShippingAddressContinue();
             checkoutPage.clickShippingMethodContinue();
