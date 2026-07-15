@@ -16,7 +16,6 @@ public class CheckoutPage extends BasePage {
     private By paymentMethodContinueButton = By.cssSelector("input[onclick='PaymentMethod.save()']");
     private By paymentInformationContinueButton = By.cssSelector("input[onclick='PaymentInfo.save()']");
     private By confirmOrderContinueButton = By.cssSelector("input[onclick='ConfirmOrder.save()']");
-    private By orderConfirmSuccessMessage = By.cssSelector(".order-completed .title strong");
 
     // Guest Billing Address
     private By firstNameTextBox = By.id("BillingNewAddress_FirstName");
@@ -69,12 +68,9 @@ public class CheckoutPage extends BasePage {
         click(paymentInformationContinueButton);
     }
 
-    public void clickConfirmOrderContinue(){
+    public OrderConfirmationPage clickConfirmOrderContinue(){
         click(confirmOrderContinueButton);
-    }
-
-    public boolean isOrderConfirmSuccessMessageDisplayed(){
-        return isDisplayed(orderConfirmSuccessMessage);
+        return new OrderConfirmationPage(driver);
     }
 
     public void fillBillingAddress(BillingAddress billingAddress){

@@ -88,8 +88,8 @@
             checkoutPage.clickShippingMethodContinue();
             checkoutPage.clickPaymentMethodContinue();
             checkoutPage.clickPaymentInformationContinue();
-            checkoutPage.clickConfirmOrderContinue();
-            Assert.assertTrue(checkoutPage.isOrderConfirmSuccessMessageDisplayed());
+            OrderConfirmationPage orderConfirmationPage = checkoutPage.clickConfirmOrderContinue();
+            Assert.assertTrue(orderConfirmationPage.isOrderPlaced());
         }
 
         @Test
@@ -107,7 +107,7 @@
             checkoutPage.clickShippingMethodContinue();
             checkoutPage.clickPaymentMethodContinue();
             checkoutPage.clickPaymentInformationContinue();
-            checkoutPage.clickConfirmOrderContinue();
-            Assert.assertTrue(checkoutPage.isOrderConfirmSuccessMessageDisplayed());
+            OrderConfirmationPage orderConfirmationPage = checkoutPage.clickConfirmOrderContinue();
+            Assert.assertTrue(orderConfirmationPage.isOrderPlaced());
         }
     }
