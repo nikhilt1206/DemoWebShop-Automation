@@ -18,7 +18,9 @@ public class OrderConfirmationPage extends BasePage {
     }
 
     public String getOrderNumber(){
-        return getText(orderNumber);
+        String text = getText(orderNumber);
+        String[] orderInfo = text.split(":");
+        return orderInfo[1].trim();
     }
 
     public HomePage clickContinue(){

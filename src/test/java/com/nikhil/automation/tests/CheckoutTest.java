@@ -89,7 +89,9 @@
             checkoutPage.clickPaymentMethodContinue();
             checkoutPage.clickPaymentInformationContinue();
             OrderConfirmationPage orderConfirmationPage = checkoutPage.clickConfirmOrderContinue();
-            Assert.assertTrue(orderConfirmationPage.isOrderPlaced());
+            String orderNumber = orderConfirmationPage.getOrderNumber();
+            System.out.println("Order Number: "+orderNumber);
+            Assert.assertFalse(orderNumber.isEmpty());
         }
 
         @Test
@@ -109,5 +111,8 @@
             checkoutPage.clickPaymentInformationContinue();
             OrderConfirmationPage orderConfirmationPage = checkoutPage.clickConfirmOrderContinue();
             Assert.assertTrue(orderConfirmationPage.isOrderPlaced());
+            String orderNumber = orderConfirmationPage.getOrderNumber();
+            System.out.println("Order Number: "+orderNumber);
+            Assert.assertFalse(orderNumber.isEmpty());
         }
     }
