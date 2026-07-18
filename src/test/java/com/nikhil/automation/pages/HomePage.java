@@ -8,10 +8,6 @@ public class HomePage extends BasePage{
     private By loginLink = By.linkText("Log in");
     private By registerLink = By.linkText("Register");
 
-    public HeaderComponent getHeader(){
-        return new HeaderComponent(driver);
-    }
-
     public HomePage(WebDriver driver){
         super(driver);
     }

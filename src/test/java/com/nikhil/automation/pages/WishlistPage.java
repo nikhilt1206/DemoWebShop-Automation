@@ -15,10 +15,6 @@ public class WishlistPage extends BasePage{
         super(driver);
     }
 
-    public HeaderComponent getHeader(){
-        return new HeaderComponent(driver);
-    }
-
     public String getWishlistProductName(){
         return getText(wishlistProductName);
     }

@@ -1,10 +1,10 @@
 package com.nikhil.automation.pages;
 
+import com.nikhil.automation.components.HeaderComponent;
 import com.nikhil.automation.constants.FrameworkConstants;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
-import org.openqa.selenium.support.ui.ExpectedCondition;
 import org.openqa.selenium.support.ui.Select;
 import org.openqa.selenium.support.ui.WebDriverWait;
 
@@ -20,6 +20,10 @@ public class BasePage {
     public BasePage(WebDriver driver){
         this.driver=driver;
         wait = new WebDriverWait(driver,Duration.ofSeconds(FrameworkConstants.EXPLICIT_WAIT));
+    }
+
+    public HeaderComponent getHeader() {
+        return new HeaderComponent(driver);
     }
 
     public void click(By locator){

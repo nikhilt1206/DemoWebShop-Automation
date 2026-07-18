@@ -7,13 +7,10 @@ import org.openqa.selenium.WebDriver;
 public class AccountPage extends BasePage{
 
     private By logoutLink = By.className("ico-logout");
+    private By orderLink = By.cssSelector("div.block-account-navigation a[href='/customer/orders']");
 
     public AccountPage(WebDriver driver){
         super(driver);
-    }
-
-    public HeaderComponent getHeader(){
-        return new HeaderComponent(driver);
     }
 
     public boolean isLogoutDisplayed(){
@@ -23,6 +20,11 @@ public class AccountPage extends BasePage{
     public HomePage clickLogout(){
         click(logoutLink);
         return new HomePage(driver);
+    }
+
+    public OrdersPage clickOrders(){
+        click(orderLink);
+        return new OrdersPage(driver);
     }
 
 }

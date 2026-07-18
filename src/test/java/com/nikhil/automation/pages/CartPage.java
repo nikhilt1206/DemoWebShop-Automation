@@ -26,10 +26,6 @@ public class CartPage extends BasePage{
         super(driver);
     }
 
-    public HeaderComponent getHeader(){
-        return new HeaderComponent(driver);
-    }
-
     public boolean isCartPageDisplayed(){
         return isDisplayed(shoppingCartHeader);
     }

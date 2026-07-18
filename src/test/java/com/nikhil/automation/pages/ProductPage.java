@@ -13,10 +13,6 @@
             super(driver);
         }
 
-        public HeaderComponent getHeader(){
-            return new HeaderComponent(driver);
-        }
-
         public ProductPage addToCart(){
             HeaderComponent headerComponent = getHeader();
             int currentCount = headerComponent.getCartCount();

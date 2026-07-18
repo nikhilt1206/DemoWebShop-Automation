@@ -90,8 +90,10 @@
             checkoutPage.clickPaymentInformationContinue();
             OrderConfirmationPage orderConfirmationPage = checkoutPage.clickConfirmOrderContinue();
             String orderNumber = orderConfirmationPage.getOrderNumber();
-            System.out.println("Order Number: "+orderNumber);
             Assert.assertFalse(orderNumber.isEmpty());
+            AccountPage accountPage = orderConfirmationPage.getHeader().clickMyAccount();
+            OrdersPage ordersPage = accountPage.clickOrders();
+            Assert.assertTrue(ordersPage.isOrderPresent(orderNumber));
         }
 
         @Test

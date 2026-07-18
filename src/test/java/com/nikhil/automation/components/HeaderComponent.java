@@ -1,9 +1,6 @@
 package com.nikhil.automation.components;
 
-import com.nikhil.automation.pages.BasePage;
-import com.nikhil.automation.pages.CartPage;
-import com.nikhil.automation.pages.SearchResultsPage;
-import com.nikhil.automation.pages.WishlistPage;
+import com.nikhil.automation.pages.*;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 
@@ -15,6 +12,7 @@ public class HeaderComponent extends BasePage {
     private By shoppingCartLink = By.className("ico-cart");
     private By wishlistLink = By.cssSelector("a.ico-wishlist");
     private By wishlistCount = By.cssSelector("span.wishlist-qty");
+    private By accountLink = By.cssSelector("a.account");
 
     public HeaderComponent(WebDriver driver){
         super(driver);
@@ -54,5 +52,10 @@ public class HeaderComponent extends BasePage {
 
     public String getWishlistCountText(){
         return getText(wishlistCount);
+    }
+
+    public AccountPage clickMyAccount(){
+        click(accountLink);
+        return new AccountPage(driver);
     }
 }
