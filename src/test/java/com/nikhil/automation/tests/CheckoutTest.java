@@ -93,6 +93,11 @@
             Assert.assertFalse(orderNumber.isEmpty());
             AccountPage accountPage = orderConfirmationPage.getHeader().clickMyAccount();
             OrdersPage ordersPage = accountPage.clickOrders();
+            OrderDetailsPage orderDetailsPage =  ordersPage.clickOrderDetails(orderNumber);
+            Assert.assertEquals(
+                    orderDetailsPage.getProductName(),
+                    "14.1-inch Laptop"
+            );
             Assert.assertTrue(ordersPage.isOrderPresent(orderNumber));
         }
 

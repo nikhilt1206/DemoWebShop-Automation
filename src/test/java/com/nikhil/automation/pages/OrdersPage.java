@@ -16,4 +16,17 @@ public class OrdersPage extends BasePage {
     public boolean isOrderPresent(String orderNumber){
         return isDisplayed(getOrderNumberLocator(orderNumber));
     }
+
+    private By getOrderDetailsButtonLocator(String orderNumber) {
+        return By.xpath(
+                "//strong[contains(text(),'" + orderNumber + "')]" +
+                        "/ancestor::div[@class='section order-item']" +
+                        "//input[@value='Details']"
+        );
+    }
+
+    public OrderDetailsPage clickOrderDetails(String orderNumber){
+        click(getOrderDetailsButtonLocator(orderNumber));
+        return new OrderDetailsPage(driver);
+    }
 }
