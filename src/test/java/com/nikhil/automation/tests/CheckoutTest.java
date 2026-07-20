@@ -99,6 +99,9 @@
                     "14.1-inch Laptop"
             );
             Assert.assertTrue(ordersPage.isOrderPresent(orderNumber));
+            Assert.assertEquals(orderDetailsPage.getQuantity(), 1);
+            System.out.println(orderDetailsPage.getProductPrice());
+            System.out.println(orderDetailsPage.getTotalPrice());
         }
 
         @Test
