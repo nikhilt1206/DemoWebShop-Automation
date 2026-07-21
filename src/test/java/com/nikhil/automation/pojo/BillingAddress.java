@@ -1,5 +1,7 @@
     package com.nikhil.automation.pojo;
 
+    import java.util.Objects;
+
     public class BillingAddress {
 
         private String firstName;
@@ -52,5 +54,38 @@
 
         public String getPhoneNumber() {
             return phoneNumber;
+        }
+
+        @Override
+        public boolean equals(Object obj){
+            if(this == obj){
+                return true;
+            }
+            if(obj==null || getClass()!=obj.getClass()){
+                return false;
+            }
+            BillingAddress other = (BillingAddress) obj;
+            return Objects.equals(firstName, other.firstName)
+                    && Objects.equals(lastName, other.lastName)
+                    && Objects.equals(email, other.email)
+                    && Objects.equals(country, other.country)
+                    && Objects.equals(city, other.city)
+                    && Objects.equals(address, other.address)
+                    && Objects.equals(zipCode, other.zipCode)
+                    && Objects.equals(phoneNumber, other.phoneNumber);
+        }
+
+        @Override
+        public int hashCode(){
+            return Objects.hash(
+                    firstName,
+                    lastName,
+                    email,
+                    country,
+                    city,
+                    address,
+                    zipCode,
+                    phoneNumber
+            );
         }
     }
