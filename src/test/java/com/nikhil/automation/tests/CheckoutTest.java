@@ -134,5 +134,8 @@
             String orderNumber = orderConfirmationPage.getOrderNumber();
             System.out.println("Order Number: "+orderNumber);
             Assert.assertFalse(orderNumber.isEmpty());
+            OrderDetailsPage orderDetailsPage = orderConfirmationPage.clickOrderDetails();
+            BillingAddress actualbillingAddress = orderDetailsPage.getBillingAddress();
+            Assert.assertEquals(actualbillingAddress, expectedBillingAddress);
         }
     }

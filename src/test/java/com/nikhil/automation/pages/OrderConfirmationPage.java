@@ -8,6 +8,7 @@ public class OrderConfirmationPage extends BasePage {
     private By successMessage=By.cssSelector(".section.order-completed .title");
     private By orderNumber=By.cssSelector(".details li");
     private By continueButton=By.cssSelector(".order-completed-continue-button");
+    private By orderDetailsLink = By.linkText("Click here for order details.");
 
     public OrderConfirmationPage(WebDriver driver){
         super(driver);
@@ -26,5 +27,10 @@ public class OrderConfirmationPage extends BasePage {
     public HomePage clickContinue(){
         click(continueButton);
         return new HomePage(driver);
+    }
+
+    public OrderDetailsPage clickOrderDetails(){
+        click(orderDetailsLink);
+        return new OrderDetailsPage(driver);
     }
 }
