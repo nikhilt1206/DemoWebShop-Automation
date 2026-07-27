@@ -17,7 +17,12 @@ public class ScreenshotUtils {
 
         TakesScreenshot ts = (TakesScreenshot) driver;
         File source = ts.getScreenshotAs(OutputType.FILE);
-        File destination = new File("test-output/screenshots/"+testName+"_"+timeStamp+".png");
+        File destination = new File("test-output"
+                + File.separator
+                + "screenshots"
+                + File.separator
+                + testName+ "_"
+                + timeStamp + ".png");
         try {
             FileUtils.copyFile(source,destination);
         } catch (IOException e) {

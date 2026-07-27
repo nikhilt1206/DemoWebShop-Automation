@@ -6,7 +6,7 @@ import com.aventstack.extentreports.reporter.configuration.Theme;
 import com.nikhil.automation.constants.FrameworkConstants;
 
 public class ExtentManager {
-    private static ExtentReports extentReports;
+    private static ExtentReports extentReports = null;
 
     public static ExtentReports getExtentReports(){
         if(extentReports==null){
