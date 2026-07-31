@@ -24,7 +24,6 @@ public class LoginData {
     }
 
     @Override
-
     public String toString() {
         return "LoginData{" +
                 "email='" + email + '\'' +
