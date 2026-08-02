@@ -7,6 +7,10 @@
             <class name="com.nikhil.automation.tests.LoginTest"/>
             <class name="com.nikhil.automation.tests.HomePageTest"/>
             <class name="com.nikhil.automation.tests.RegistrationTest"/>
+            <class name="com.nikhil.automation.tests.CartTest"/>
+            <class name="com.nikhil.automation.tests.SearchTest"/>
+            <class name="com.nikhil.automation.tests.WishlistTest"/>
+            <class name="com.nikhil.automation.tests.CheckoutTest"/>
         </classes>
     </test>
 </suite>
