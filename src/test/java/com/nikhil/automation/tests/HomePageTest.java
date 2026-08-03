@@ -18,8 +18,8 @@ public class HomePageTest extends BaseTest {
         LoginPage loginPage = homePage.clickLogin();
 
         AccountPage accountPage = loginPage.login(
-                ConfigReader.getProperty("email"),
-                ConfigReader.getProperty("password")
+                loginData.getEmail(),
+                loginData.getPassword()
         );
         Assert.assertTrue(accountPage.isLogoutDisplayed());
 

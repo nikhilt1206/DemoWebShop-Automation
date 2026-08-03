@@ -4,8 +4,6 @@ import com.nikhil.automation.base.BaseTest;
 import com.nikhil.automation.pages.AccountPage;
 import com.nikhil.automation.pages.HomePage;
 import com.nikhil.automation.pages.LoginPage;
-import com.nikhil.automation.pojo.LoginData;
-import com.nikhil.automation.utils.JsonUtils;
 import org.testng.Assert;
 import org.testng.annotations.Listeners;
 import org.testng.annotations.Test;
@@ -18,7 +16,6 @@ public class LoginTest extends BaseTest {
 
         HomePage homePage = new HomePage(driver);
         LoginPage loginPage = homePage.clickLogin();
-        LoginData loginData = JsonUtils.getLoginData();
         AccountPage accountPage = loginPage.login(
                 loginData.getEmail(),
                 loginData.getPassword()

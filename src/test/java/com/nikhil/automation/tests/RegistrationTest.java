@@ -17,11 +17,11 @@ public class RegistrationTest extends BaseTest {
         String email = "nikhil" + System.currentTimeMillis() + "@gmail.com";
 
         registerPage.registerUser(
-                ConfigReader.getProperty("gender"),
-                ConfigReader.getProperty("firstname"),
-                ConfigReader.getProperty("lastname"),
+                registrationData.getGender(),
+                registrationData.getFirstName(),
+                registrationData.getLastName(),
                 email,
-                ConfigReader.getProperty("password")
+                registrationData.getPassword()
         );
         Assert.assertEquals(registerPage.getRegistrationSuccessMessage(),"Your registration completed");
     }

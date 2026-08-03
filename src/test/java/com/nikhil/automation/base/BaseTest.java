@@ -1,7 +1,10 @@
 package com.nikhil.automation.base;
 
 import com.nikhil.automation.constants.BrowserType;
+import com.nikhil.automation.pojo.LoginData;
+import com.nikhil.automation.pojo.RegistrationData;
 import com.nikhil.automation.utils.ConfigReader;
+import com.nikhil.automation.utils.JsonUtils;
 import com.nikhil.automation.utils.LoggerUtils;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
@@ -11,6 +14,8 @@ import org.testng.annotations.BeforeMethod;
 public class BaseTest {
 
     protected static WebDriver driver;
+    protected LoginData loginData;
+    protected RegistrationData registrationData;
 
     public static WebDriver getDriver(){
         return driver;
@@ -18,6 +23,8 @@ public class BaseTest {
 
     @BeforeMethod
     public void setUp(){
+        loginData = JsonUtils.getLoginData();
+        registrationData = JsonUtils.getRegistrationData();
         String url = ConfigReader.getProperty("url");
         String browser = ConfigReader.getProperty("browser");
         BrowserType browserType = BrowserType.valueOf(browser.toUpperCase());
