@@ -38,7 +38,9 @@ public class HeaderComponent extends BasePage {
     public SearchResultsPage searchProduct(String product){
         enterDetails(searchInputBox,product);
         click(searchButton);
-        return new SearchResultsPage(driver);
+        SearchResultsPage searchResultsPage = new SearchResultsPage(driver);
+        searchResultsPage.isSearchPageDisplayed();
+        return searchResultsPage;
     }
 
     public WishlistPage clickWishlist(){

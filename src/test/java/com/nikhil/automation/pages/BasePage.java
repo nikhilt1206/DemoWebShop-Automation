@@ -27,7 +27,8 @@ public class BasePage {
     }
 
     public void click(By locator){
-        wait.until(elementToBeClickable(locator)).click();
+        WebElement element = wait.until(elementToBeClickable(locator));
+        element.click();
     }
 
     public void enterDetails(By locator, String text){
