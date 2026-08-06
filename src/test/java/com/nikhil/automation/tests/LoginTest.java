@@ -12,16 +12,29 @@ import org.testng.annotations.Test;
 public class LoginTest extends BaseTest {
 
     @Test
-    public void verifyUserLogin(){
+    public void verifyValidUserLogin(){
 
         HomePage homePage = new HomePage(driver);
         LoginPage loginPage = homePage.clickLogin();
-        AccountPage accountPage = loginPage.login(
+        loginPage.login(
                 loginData.getEmail(),
                 loginData.getPassword()
         );
-        //ScreenshotUtils.captureScreenshot(driver,"LoginTest");
+        AccountPage accountPage = new AccountPage(driver);
         Assert.assertTrue(accountPage.isLogoutDisplayed());
-        //Assert.assertTrue(false);
+    }
+
+    @Test
+    public void verifyInvalidUserLogin(){
+        HomePage homePage = new HomePage(driver);
+        LoginPage loginPage = homePage.clickLogin();
+        loginPage.login(
+                invalidLoginData.getEmail(),
+                invalidLoginData.getPassword()
+        );
+        Assert.assertTrue(
+                loginPage.getLoginErrorMessage()
+                        .contains("Login was unsuccessful")
+        );
     }
 }

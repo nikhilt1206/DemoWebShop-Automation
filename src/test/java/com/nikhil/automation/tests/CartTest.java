@@ -58,8 +58,8 @@ public class CartTest extends BaseTest {
         productPage.addToCart();
         HeaderComponent headerComponent = productPage.getHeader();
         CartPage cartPage = headerComponent.clickShoppingCart();
-        cartPage.removeProductFromCart();
-        Assert.assertEquals(headerComponent.getCartCount(), "(0)");
+        cartPage.removeAllProductsFromCart();
+        Assert.assertEquals(headerComponent.getCartCount(), 0);
         Assert.assertEquals(cartPage.getEmptyCartMessage(),"Your Shopping Cart is empty!");
     }
 

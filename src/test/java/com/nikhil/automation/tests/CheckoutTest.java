@@ -13,8 +13,9 @@
             private CheckoutPage navigateToRegisteredCheckout(){
                 HomePage homePage = new HomePage(driver);
                 LoginPage loginPage = homePage.clickLogin();
-                AccountPage accountPage = loginPage.login(loginData.getEmail(),
+                loginPage.login(loginData.getEmail(),
                         loginData.getPassword());
+                AccountPage accountPage = new AccountPage(driver);
                 HeaderComponent headerComponent = accountPage.getHeader();
                 SearchResultsPage searchResultsPage = headerComponent.searchProduct("Laptop");
                 ProductPage productPage = searchResultsPage.clickProduct();

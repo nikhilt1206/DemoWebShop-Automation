@@ -9,6 +9,7 @@ import org.openqa.selenium.support.ui.Select;
 import org.openqa.selenium.support.ui.WebDriverWait;
 
 import java.time.Duration;
+import java.util.List;
 
 import static org.openqa.selenium.support.ui.ExpectedConditions.*;
 
@@ -28,6 +29,11 @@ public class BasePage {
 
     public void click(By locator){
         WebElement element = wait.until(elementToBeClickable(locator));
+        element.click();
+    }
+
+    public void click(WebElement element){
+        wait.until(elementToBeClickable(element));
         element.click();
     }
 
@@ -58,5 +64,9 @@ public class BasePage {
         WebElement element = wait.until(visibilityOfElementLocated(locator));
         Select select = new Select(element);
         select.selectByVisibleText(visibleText);
+    }
+
+    public List<WebElement> getElements(By locator){
+        return wait.until(visibilityOfAllElementsLocatedBy(locator));
     }
 }

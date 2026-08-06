@@ -10,6 +10,7 @@ public class LoginPage extends BasePage{
     private By loginButton = By.cssSelector(".login-button");
     private By loginPageHeader = By.xpath("//h1[contains(text(),'Welcome, Please Sign In!')]");
     private By checkoutAsGuestButton = By.cssSelector(".checkout-as-guest-button");
+    private By loginErrorMessage = By.cssSelector(".validation-summary-errors");
 
     public LoginPage(WebDriver driver){
         super(driver);
@@ -18,18 +19,21 @@ public class LoginPage extends BasePage{
     public void enterEmail(String email){
         enterDetails(emailTextBox,email);
     }
+
     public void enterPassword(String password){
         enterDetails(passwordTextBox,password);
     }
-    public AccountPage clickLogin(){
+
+    public void clickLogin(){
         click(loginButton);
-        return new AccountPage(driver);
     }
-    public AccountPage login(String email, String password){
+
+    public void login(String email, String password){
         enterEmail(email);
         enterPassword(password);
-        return clickLogin();
+        clickLogin();
     }
+
     public boolean isLoginPageDisplayed(){
         return isDisplayed(loginPageHeader);
     }
@@ -37,5 +41,9 @@ public class LoginPage extends BasePage{
     public CheckoutPage clickCheckoutAsGuest(){
         click(checkoutAsGuestButton);
         return new CheckoutPage(driver);
+    }
+
+    public String getLoginErrorMessage(){
+        return getText(loginErrorMessage);
     }
 }

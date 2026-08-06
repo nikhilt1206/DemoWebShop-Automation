@@ -16,6 +16,7 @@ public class BaseTest {
     protected static WebDriver driver;
     protected LoginData loginData;
     protected RegistrationData registrationData;
+    protected LoginData invalidLoginData;
 
     public static WebDriver getDriver(){
         return driver;
@@ -24,6 +25,7 @@ public class BaseTest {
     @BeforeMethod
     public void setUp(){
         loginData = JsonUtils.getLoginData();
+        invalidLoginData = JsonUtils.getInvalidLoginData();
         registrationData = JsonUtils.getRegistrationData();
         String url = ConfigReader.getProperty("url");
         String browser = ConfigReader.getProperty("browser");

@@ -3,6 +3,9 @@ package com.nikhil.automation.pages;
 import com.nikhil.automation.components.HeaderComponent;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.WebElement;
+
+import java.util.List;
 
 public class CartPage extends BasePage{
 
@@ -43,8 +46,14 @@ public class CartPage extends BasePage{
         return new LoginPage(driver);
     }
 
-    public void removeProductFromCart(){
-        click(removeProductCheckbox);
+    public void removeAllProductsFromCart(){
+        if(isCartEmpty()){
+            return;
+        }
+        List<WebElement> removeCheckboxes = getElements(removeProductCheckbox);
+        for(WebElement element : removeCheckboxes){
+            click(element);
+        }
         click(updateShoppingCartButton);
     }
 
@@ -82,5 +91,9 @@ public class CartPage extends BasePage{
     public SearchResultsPage clickContinueShopping(){
         click(continueShoppingButton);
         return new SearchResultsPage(driver);
+    }
+
+    public boolean isCartEmpty(){
+        return getEmptyCartMessage().contains("Your Shopping Cart is empty!");
     }
 }

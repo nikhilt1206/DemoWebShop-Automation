@@ -15,10 +15,11 @@ public class HomePageTest extends BaseTest {
 
         HomePage homePage = new HomePage(driver);
         LoginPage loginPage = homePage.clickLogin();
-        AccountPage accountPage = loginPage.login(
+        loginPage.login(
                 loginData.getEmail(),
                 loginData.getPassword()
         );
+        AccountPage accountPage = new AccountPage(driver);
         Assert.assertTrue(accountPage.isLogoutDisplayed());
         HomePage homePageAfterLogout = accountPage.clickLogout();
         Assert.assertTrue(homePageAfterLogout.isLoginLinkDisplayed());
